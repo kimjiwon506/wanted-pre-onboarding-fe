@@ -2,13 +2,13 @@ import './App.css';
 import React from "react";
 import styled from "styled-components";
 import Header from './components/Header';
-import Form from './components/Form';
+import Join from './pages/Join';
 
 function App() {
   return (
     <WrapStyle>
       <Header />
-      <Form />
+      <Join /> 
     </WrapStyle>
   );
 }
