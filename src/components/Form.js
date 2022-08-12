@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import FormInput from "./FormInput";
 import classnames from "classnames";
+// import axios from axios;
 
 const Form = () => {
   const initialData = {
@@ -10,6 +11,9 @@ const Form = () => {
     pwCheck: "",
   };
   const [errorData, setErrorData] = useState(initialData);
+  // const register = () => {
+
+  // }
   return (
     <FormStyle>
       <FormInput
@@ -36,6 +40,7 @@ const Form = () => {
       <ButtonStyle
         type="submit"
         disabled={!(errorData.email === true && errorData.pw === true && errorData.pwCheck === true)}
+        // onClick={register}
       >
         가입하기
       </ButtonStyle>

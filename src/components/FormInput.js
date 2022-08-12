@@ -36,7 +36,7 @@ const FormInput = ({ id, label, placeholder, errorData, setErrorData }) => {
           {label}
         </label>
         <input
-          id=""
+          id={id}
           className="input"
           placeholder={placeholder}
           value={value}
