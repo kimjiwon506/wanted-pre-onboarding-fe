@@ -1,21 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import FormInput from "./FormInput";
-import classnames from "classnames";
-// import axios from axios;
+import { FormContext } from "../App";
+import axios from "axios";
+
+const initialErrorData = {
+  id: "",
+  pw: "",
+  pwCheck: "",
+};
 
 const Form = () => {
-  const initialData = {
-    email: "",
-    pw: "",
-    pwCheck: "",
-  };
-  const [errorData, setErrorData] = useState(initialData);
-  // const register = () => {
+  const [errorData, setErrorData] = useState(initialErrorData);
+  const { formData } = useContext(FormContext);
+  // console.log(formData.email);
+  // console.log(formData.pw);
+  // console.log(formData.pwCheck);
 
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signup",
+        {
+          email: formData.email,
+          password: formData.pw,
+        },
+        {
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((response) => {
+        console.log("Error!");
+      });
+  };
+
   return (
-    <FormStyle>
+    <FormStyle onSubmit={handleSubmit}>
       <FormInput
         id="email"
         label="이메일"
@@ -39,8 +66,13 @@ const Form = () => {
       />
       <ButtonStyle
         type="submit"
-        disabled={!(errorData.email === true && errorData.pw === true && errorData.pwCheck === true)}
-        // onClick={register}
+        disabled={
+          !(
+            errorData.email === true &&
+            errorData.pw === true &&
+            errorData.pwCheck === true
+          )
+        }
       >
         가입하기
       </ButtonStyle>
@@ -56,14 +88,14 @@ const ButtonStyle = styled.button`
   margin: 30px 10px 0 10px;
   padding: 10px 0;
   border-radius: 4px;
-  border:0;
+  border: 0;
   background: black;
   text-align: center;
   box-sizing: border-box;
   cursor: pointer;
   color: white;
   font-weight: bold;
-  &:disabled{
+  &:disabled {
     background-color: #cccccc;
     cursor: default;
   }

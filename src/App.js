@@ -1,14 +1,26 @@
-import './App.css';
-import React from "react";
+import React, { createContext, useState } from "react";
 import styled from "styled-components";
-import Header from './components/Header';
-import Join from './pages/Join';
+import Header from "./components/Header";
+import Join from "./pages/Join";
+
+const initialFormData = {
+  email: "",
+  pw: "",
+  pwCheck: "",
+};
+export const FormContext = createContext({
+  formData: initialFormData,
+  setFormData: () => {},
+});
 
 function App() {
+  const [formData, setFormData] = useState(initialFormData);
   return (
     <WrapStyle>
-      <Header />
-      <Join /> 
+      <FormContext.Provider value={{ formData, setFormData }}>
+        <Header />
+        <Join />
+      </FormContext.Provider>
     </WrapStyle>
   );
 }
@@ -16,6 +28,6 @@ function App() {
 const WrapStyle = styled.div`
   max-width: 420px;
   margin: 0 auto;
-`
+`;
 
 export default App;

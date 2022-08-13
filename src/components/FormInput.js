@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import styled from "styled-components";
+import { FormContext } from "../App";
 
 // 회원가입 인풋
 const EMAIL_REGEX = new RegExp(
@@ -15,9 +16,9 @@ const ERROR_MSG = {
 };
 
 const FormInput = ({ id, label, placeholder, errorData, setErrorData }) => {
-  const [value, setValue] = useState('');
   const checkRegex = () => {
     let result;
+    const value = formData[id];
     if(value.length === 0){
       result = 'required'
     } else if (id === "email"){
@@ -29,6 +30,11 @@ const FormInput = ({ id, label, placeholder, errorData, setErrorData }) => {
     }
     setErrorData({ ...errorData, [id]: result })
   }
+
+  const { formData, setFormData } = useContext(FormContext);
+
+  // console.log(formData[id]);
+  
   return (
     <>
       <FormInputStyle>
@@ -39,10 +45,10 @@ const FormInput = ({ id, label, placeholder, errorData, setErrorData }) => {
           id={id}
           className="input"
           placeholder={placeholder}
-          value={value}
-          onChange={(e) => 
-            setValue(e.target.value)
-          }
+          value={formData[id]}
+          onChange={(e) => {
+            setFormData({ ...formData, [id]: e.target.value })
+          }}
           onBlur={checkRegex}
         />
         <div className="idMsg">{ERROR_MSG[errorData[id]]}</div>
