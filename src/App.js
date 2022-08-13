@@ -1,7 +1,10 @@
 import React, { createContext, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Join from "./pages/Join";
+import Login from "./pages/Login";
 
 const initialFormData = {
   email: "",
@@ -16,12 +19,19 @@ export const FormContext = createContext({
 function App() {
   const [formData, setFormData] = useState(initialFormData);
   return (
-    <WrapStyle>
-      <FormContext.Provider value={{ formData, setFormData }}>
-        <Header />
-        <Join />
-      </FormContext.Provider>
-    </WrapStyle>
+    <BrowserRouter>
+      <WrapStyle>
+        <FormContext.Provider value={{ formData, setFormData }}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Join />}></Route>
+            <Route path="/login" component={Login} />
+            {/* <Route path="/about/:name" component={About}/> */}
+          </Routes>
+          <Footer />
+        </FormContext.Provider>
+      </WrapStyle>
+    </BrowserRouter>
   );
 }
 

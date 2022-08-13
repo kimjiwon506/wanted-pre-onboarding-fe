@@ -13,9 +13,6 @@ const initialErrorData = {
 const Form = () => {
   const [errorData, setErrorData] = useState(initialErrorData);
   const { formData } = useContext(FormContext);
-  // console.log(formData.email);
-  // console.log(formData.pw);
-  // console.log(formData.pwCheck);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +32,7 @@ const Form = () => {
       )
       .then((response) => {
         console.log(response.data);
+        localStorage.setItem("loginKey", JSON.stringify(response.data))
       })
       .catch((response) => {
         console.log("Error!");

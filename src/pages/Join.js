@@ -1,9 +1,9 @@
 import React from 'react';
-import Form from '../components/Form';
+import JoinForm from '../components/JoinForm';
 
 const Join = () => {
   return (
-    <Form />
+    <JoinForm />
   );
 };
 
