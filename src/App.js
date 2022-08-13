@@ -24,8 +24,8 @@ function App() {
         <FormContext.Provider value={{ formData, setFormData }}>
           <Header />
           <Routes>
-            <Route path="/" element={<Join />}></Route>
-            <Route path="/login" component={Login} />
+              <Route exact path="/" element={<Join />}></Route>
+              <Route path="/login" element={<Login />}></Route>
             {/* <Route path="/about/:name" component={About}/> */}
           </Routes>
           <Footer />

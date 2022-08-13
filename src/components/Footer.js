@@ -4,21 +4,20 @@ import styled from "styled-components";
 const Login = () => {
   return (
     <FooterStyle>
-      <li>회원가입</li>
-      <li>로그인</li>
+      <button onClick={() => {window.location.href = '/'}}>회원가입</button>
+      <button onClick={() => {window.location.href = '/login'}}>로그인</button>
     </FooterStyle>
   );
 };
 
-const FooterStyle = styled.ul`
+const FooterStyle = styled.div`
   display: flex;
   justify-content: center;
   margin: 0;
   margin-top: 50px;
   padding: 0;
-  li {
-    list-style: none;
-    font-size: 14px;
+  button {
+    all:unset;
     cursor: pointer;
     position: relative;
     &:nth-child(2) {

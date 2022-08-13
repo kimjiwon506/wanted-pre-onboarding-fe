@@ -10,8 +10,8 @@ const PW_REGEX = new RegExp('^[a-zA-Z0-9]{8,16}$')
 
 const ERROR_MSG = {
   required: "필수 정보입니다.",
-  invalidEmail: "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.",
-  invalidPw: "8~16자 영문 대 소문자, 숫자를 사용하세요.",
+  invalidEmail: "@ 포함해 주세요.",
+  invalidPw: "8자 이상 입력해주세요.",
   invalidPwCheck: "비밀번호가 일치하지 않습니다.",
 };
 

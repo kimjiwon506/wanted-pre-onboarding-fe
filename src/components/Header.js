@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { FiChevronLeft } from "react-icons/fi";
 
@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <HeaderStyle>
       <FiChevronLeft />
-      <span>회원가입</span>
+      <span>{window.location.pathname === '/' ? '회원가입' : '로그인'}</span>
     </HeaderStyle>
   );
 };
