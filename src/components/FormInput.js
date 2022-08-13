@@ -21,12 +21,12 @@ const FormInput = ({ id, label, placeholder, errorData, setErrorData }) => {
     const value = formData[id];
     if(value.length === 0){
       result = 'required'
-    } else if (id === "email"){
+    } else if (id === "email" || id === "loginEmailCheck"){
       result = EMAIL_REGEX.test(value) ? true : "invalidEmail";
-    }else if (id === "pw"){
+    }else if (id === "pw" || id === "loginPwCheck"){
       result = PW_REGEX.test(value) ? true : "invalidPw";
     }else if (id === "pwCheck"){
-      result = "pw".value !== "pwCheck".value ? 'invalidPwCheck' : true
+      result = "pw".value !== "pwCheck".value ? true : 'invalidPwCheck'
     }
     setErrorData({ ...errorData, [id]: result })
   }

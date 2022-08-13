@@ -3,13 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Join from "./pages/Join";
-import Login from "./pages/Login";
+import { Join, Login, Todo } from './pages'
 
 const initialFormData = {
   email: "",
   pw: "",
   pwCheck: "",
+  loginEmailCheck: "",
+  loginPwCheck: "",
 };
 export const FormContext = createContext({
   formData: initialFormData,
@@ -26,7 +27,7 @@ function App() {
           <Routes>
               <Route exact path="/" element={<Join />}></Route>
               <Route path="/login" element={<Login />}></Route>
-            {/* <Route path="/about/:name" component={About}/> */}
+              <Route path="/todo" element={<Todo />}></Route>
           </Routes>
           <Footer />
         </FormContext.Provider>
