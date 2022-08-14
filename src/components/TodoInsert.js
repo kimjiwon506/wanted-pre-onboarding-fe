@@ -42,7 +42,7 @@ const TodoInsertStyle = styled.form`
   input {
     flex: 1;
     height: 36px;
-    border: 1px solid burlywood;
+    border: 1px solid #cccccc;
     outline: none;
     padding: 0 11px;
     border-radius: 6px;
@@ -52,7 +52,7 @@ const TodoInsertStyle = styled.form`
     display: block;
     width: 50px;
     text-align: center;
-    background: burlywood;
+    background: #cccccc;
     border-radius: 6px;
     margin-left: 6px;
     svg {

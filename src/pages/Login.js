@@ -36,38 +36,41 @@ const Login = () => {
       })
       .catch((response) => {
         console.log("Error!");
-        window.location.href = '/todo'
+        window.location.href = "/todo";
       });
   };
 
   return (
-    <FormStyle onSubmit={handleSubmit}>
-      <FormInput
-        id="loginEmailCheck"
-        label="가입하신 이메일 입력"
-        placeholder="가입하신 이메일을 입력하세요"
-        errorData={errorData}
-        setErrorData={setErrorData}
-      />
-      <FormInput
-        id="loginPwCheck"
-        label="비밀번호"
-        placeholder="가입하신 비밀번호를 입력하세요"
-        errorData={errorData}
-        setErrorData={setErrorData}
-      />
-      <ButtonStyle
-        type="submit"
-        disabled={
-          !(
-            errorData.loginEmailCheck === true &&
-            errorData.loginPwCheck === true 
-          )
-        }
-      >
-        로그인하기
-      </ButtonStyle>
-    </FormStyle>
+    <>
+      <h3>로그인</h3>
+      <FormStyle onSubmit={handleSubmit}>
+        <FormInput
+          id="loginEmailCheck"
+          label="가입하신 이메일 입력"
+          placeholder="가입하신 이메일을 입력하세요"
+          errorData={errorData}
+          setErrorData={setErrorData}
+        />
+        <FormInput
+          id="loginPwCheck"
+          label="비밀번호"
+          placeholder="가입하신 비밀번호를 입력하세요"
+          errorData={errorData}
+          setErrorData={setErrorData}
+        />
+        <ButtonStyle
+          type="submit"
+          disabled={
+            !(
+              errorData.loginEmailCheck === true &&
+              errorData.loginPwCheck === true
+            )
+          }
+        >
+          로그인하기
+        </ButtonStyle>
+      </FormStyle>
+    </>
   );
 };
 
