@@ -1,7 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import TodoInsert from "../components/TodoInsert";
 import TodoList from "../components/TodoList";
-import TodoListItem from "../components/TodoListItem";
 
 const Todo = () => {
   const [todos, setTodos] = useState([
@@ -31,18 +30,11 @@ const Todo = () => {
     [todos]
   );
 
-  const onUpdate = useCallback(
-    (id,text) => {
-      setTodos(todos.map(todo => (todo.id === id ? { ...todo, text } : todo)));
-    },
-    [todos]
-  );
-
   return (
     <div>
       <h3>일정관리</h3>
       <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onRemove={onRemove} onUpdate={onUpdate} />
+      <TodoList todos={todos} onRemove={onRemove} />
     </div>
   );
 };

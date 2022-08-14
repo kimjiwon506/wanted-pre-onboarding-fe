@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import {
   FiXCircle,
   FiEdit3,
@@ -7,11 +7,10 @@ import {
 } from "react-icons/fi";
 import styled from "styled-components";
 
-const TodoListItem = ({ todo, onRemove, onUpdate }) => {
+const TodoListItem = ({ todo, onRemove }) => {
   const { id, text, checked } = todo;
   const [checkEdit, setCheckEdit] = useState(false);
   const [value, setValue] = useState("");
-  const inputRef = useRef("");
 
   const onChange = (e) => {
     setValue(e.target.value);
@@ -21,7 +20,7 @@ const TodoListItem = ({ todo, onRemove, onUpdate }) => {
     e.preventDefault();
     setCheckEdit(false)
     todo.text = value;
-  }, [onUpdate, value]);
+  }, [value]);
 
   return (
     <TodoListItemStyle>
