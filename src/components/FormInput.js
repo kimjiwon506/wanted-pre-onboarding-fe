@@ -26,7 +26,8 @@ const FormInput = ({ id, label, placeholder, errorData, setErrorData }) => {
     }else if (id === "pw" || id === "loginPwCheck"){
       result = PW_REGEX.test(value) ? true : "invalidPw";
     }else if (id === "pwCheck"){
-      result = "pw".value !== "pwCheck".value ? true : 'invalidPwCheck'
+      //TODO:비밀번호와 비밀번호 확인이 일치하지 않을경우 문구
+      result = "pw".value === "pwCheck".value ? true : 'invalidPwCheck'
     }
     setErrorData({ ...errorData, [id]: result })
   }

@@ -32,9 +32,11 @@ const Login = () => {
       .then((response) => {
         console.log(response.data);
         //TODO: /todo로 이동
+        // window.location.href = '/todo'
       })
       .catch((response) => {
         console.log("Error!");
+        window.location.href = '/todo'
       });
   };
 

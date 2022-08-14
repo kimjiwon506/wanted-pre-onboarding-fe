@@ -6,7 +6,15 @@ const Header = () => {
   return (
     <HeaderStyle>
       <FiChevronLeft />
-      <span>{window.location.pathname === '/' ? '회원가입' : '로그인'}</span>
+      <span>{(function(){
+        if(window.location.pathname === '/'){
+          return (`회원가입`)
+        }else if(window.location.pathname === '/login'){
+          return (`로그인`)
+        }else if(window.location.pathname === '/todo'){
+          return (`투두리스트`)
+        }
+      })()}</span>
     </HeaderStyle>
   );
 };
