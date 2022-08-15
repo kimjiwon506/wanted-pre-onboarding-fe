@@ -1,21 +1,20 @@
-import React, { useState, useRef, useCallback } from "react";
+import axios from "axios";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import TodoInsert from "../components/TodoInsert";
 import TodoList from "../components/TodoList";
 
 const Todo = () => {
   const [todos, setTodos] = useState([
-    { id: 1, text: "투두리스트 만들기 테스트", checked: false },
+    { id: 1, text: "투두리스트 만들기 테스트", isCompleted: false },
   ]);
-
   const nextId = useRef(4);
-  const editId = useRef("");
 
   const onInsert = useCallback(
     (text) => {
       const todo = {
         id: nextId.current,
         text,
-        checked: false,
+        isCompleted: false,
       };
       setTodos(todos.concat(todo));
       nextId.current += 1;

@@ -21,6 +21,7 @@ const TodoInsert = ({ onInsert }) => {
     },
     [onInsert, value]
   );
+
   return (
     <TodoInsertStyle onSubmit={onSubmit}>
       <input

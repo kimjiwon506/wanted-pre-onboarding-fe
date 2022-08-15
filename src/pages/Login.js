@@ -4,6 +4,8 @@ import styled from "styled-components";
 import FormInput from "../components/FormInput";
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 const initialErrorData = {
   loginEmailCheck: "",
   loginPwCheck: "",
@@ -15,28 +17,30 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const data = {
+      email: formData.loginEmailCheck,
+      password: formData.loginPwCheck,
+    };
     axios
       .post(
-        // "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin",
-        {
-          email: formData.loginEmailCheck,
-          password: formData.loginPwCheck,
-        },
-        {
-          headers: {
-            "Content-type": "application/json",
-            Accept: "application/json",
-          },
-        }
+        "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin",
+        data,
+        // {
+        //   headers: {
+        //     "Content-type": "application/json",
+        //     Accept: "application/json",
+        //   },
+        // }
       )
       .then((response) => {
-        console.log(response.data);
-        //TODO: /todo로 이동
-        // window.location.href = '/todo'
+        const { accessToken } = response.data;
+        localStorage.setItem("loginKey", JSON.stringify(response.data));
+        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        window.location.href = "/todo";
       })
       .catch((response) => {
         console.log("Error!");
-        window.location.href = "/todo";
+        // window.location.href = "/todo";
       });
   };
 

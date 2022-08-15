@@ -1,10 +1,12 @@
-import React, { useState, useCallback } from "react";
+import axios from "axios";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   FiXCircle,
   FiEdit3,
   FiArrowUpCircle,
   FiCheckCircle,
 } from "react-icons/fi";
+import { HiCubeTransparent } from "react-icons/hi";
 import styled from "styled-components";
 
 const TodoListItem = ({ todo, onRemove }) => {
@@ -16,11 +18,33 @@ const TodoListItem = ({ todo, onRemove }) => {
     setValue(e.target.value);
   };
 
-  const onSubmitEdit = useCallback((e) => {
-    e.preventDefault();
-    setCheckEdit(false)
-    todo.text = value;
-  }, [value]);
+  const onSubmitEdit = useCallback(
+    (e) => {
+      e.preventDefault();
+      setCheckEdit(false);
+      todo.text = value;
+    },
+    [value]
+  );
+
+  const onSaveTodo = () => {
+    axios.post(
+      "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos",
+      {
+        id: id,
+        text: text,
+        isCompleted: false,
+        userId: 1,
+      },
+      {
+        headers: {
+          Authorization: "Bearer access_token",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    // console.log("id:",id, "text:",text)
+  };
 
   return (
     <TodoListItemStyle>
@@ -30,7 +54,7 @@ const TodoListItem = ({ todo, onRemove }) => {
         <input
           className="todoTitleReWrite"
           type="text"
-          value={value}
+          // value={value}
           onChange={onChange}
         />
       )}
@@ -61,7 +85,10 @@ const TodoListItem = ({ todo, onRemove }) => {
         {checked ? (
           <FiArrowUpCircle className="FiArrowUpCircle checked" />
         ) : (
-          <FiArrowUpCircle className="FiArrowUpCircle unChecked" />
+          <FiArrowUpCircle
+            className="FiArrowUpCircle unChecked"
+            onClick={onSaveTodo}
+          />
         )}
         <FiXCircle className="delete" onClick={() => onRemove(id)} />
       </div>
