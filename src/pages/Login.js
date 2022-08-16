@@ -4,7 +4,7 @@ import styled from "styled-components";
 import FormInput from "../components/FormInput";
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const initialErrorData = {
   loginEmailCheck: "",
@@ -25,12 +25,6 @@ const Login = () => {
       .post(
         "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin",
         data,
-        // {
-        //   headers: {
-        //     "Content-type": "application/json",
-        //     Accept: "application/json",
-        //   },
-        // }
       )
       .then((response) => {
         const { accessToken } = response.data;

@@ -31,7 +31,6 @@ const Form = () => {
         }
       )
       .then((response) => {
-        console.log(response.data);
         localStorage.setItem("loginKey", JSON.stringify(response.data))
         window.location.href = '/login'
       })

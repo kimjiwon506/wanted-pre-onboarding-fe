@@ -28,22 +28,30 @@ const TodoListItem = ({ todo, onRemove }) => {
   );
 
   const onSaveTodo = () => {
-    axios.post(
-      "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos",
-      {
-        id: id,
-        text: text,
-        isCompleted: false,
-        userId: 1,
-      },
-      {
-        headers: {
-          Authorization: "Bearer access_token",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    // console.log("id:",id, "text:",text)
+    localStorage.setItem("saveTodo", JSON.stringify(todo.text));
+    JSON.parse(localStorage.getItem("saveTodo"));
+
+    // localStorage.setItem(
+    //   "saveTodo",
+    //   JSON.stringify({ id: id, text: todo.text, isCompleted: false, userId: 1 })
+    // );
+    
+    // JSON.parse(localStorage.getItem("saveTodo"));
+    // axios.post(
+    //   "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos",
+    //   {
+    //     id: id,
+    //     text: text,
+    //     isCompleted: false,
+    //     userId: 1,
+    //   },
+    //   {
+    //     headers: {
+    //       Authorization: "Bearer access_token",
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // );
   };
 
   return (
@@ -51,12 +59,7 @@ const TodoListItem = ({ todo, onRemove }) => {
       {!checkEdit ? (
         <div className="todoTitle">{text}</div>
       ) : (
-        <input
-          className="todoTitleReWrite"
-          type="text"
-          // value={value}
-          onChange={onChange}
-        />
+        <input className="todoTitleReWrite" type="text" onChange={onChange} />
       )}
       <div className="icons">
         {/* 기본 수정버튼 */}
