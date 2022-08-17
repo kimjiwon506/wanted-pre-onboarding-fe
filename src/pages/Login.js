@@ -25,7 +25,7 @@ const Login = () => {
       .post(
         "/auth/signin",
         data,
-        // { withCredentials: true },
+        { withCredentials: true },
         {
           headers: {
             "Content-type": "application/json",
@@ -34,19 +34,21 @@ const Login = () => {
         }
       )
       .then((response) => {
-        const { accessToken } = response.data;
+        // const { accessToken } = response.data;
+        
         localStorage.setItem("loginKey", JSON.stringify(response.data));
+        
         // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-        // window.location.href = "/todo";
 
         // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
         // axios.defaults.headers.common[
         //   "Authorization"
         // ] = `Bearer ${accessToken}`;
+
+         window.location.href = "/todo";
       })
       .catch((response) => {
         console.log("Error!");
-        // window.location.href = "/todo";
       });
   };
 

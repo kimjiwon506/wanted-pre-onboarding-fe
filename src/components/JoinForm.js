@@ -23,7 +23,6 @@ const Form = () => {
           email: formData.email,
           password: formData.pw,
         },
-        
         {
           headers: {
             "Content-type": "application/json",
@@ -33,7 +32,7 @@ const Form = () => {
       )
       .then((response) => {
         localStorage.setItem("loginKey", JSON.stringify(response.data));
-        window.location.href = "/login";
+        window.location.href = "/signin";
       })
 
       .catch((response) => {

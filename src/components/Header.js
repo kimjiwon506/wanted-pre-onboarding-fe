@@ -5,7 +5,7 @@ import { FiChevronLeft } from "react-icons/fi";
 const Header = () => {
   return (
     <HeaderStyle>
-      <FiChevronLeft />
+      <FiChevronLeft onClick={()=> window.history.back()} />
       <span>{(function(){
         if(window.location.pathname === '/'){
           return (`회원가입`)
