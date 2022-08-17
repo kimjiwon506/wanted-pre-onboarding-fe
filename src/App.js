@@ -3,7 +3,11 @@ import { BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Routes from "./routes"
+import Routes from "./routes";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.withCredentials = true;
 
 const initialFormData = {
   email: "",

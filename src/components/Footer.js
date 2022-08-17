@@ -5,7 +5,7 @@ const Login = () => {
   return (
     <FooterStyle>
       <button onClick={() => {window.location.href = '/'}}>회원가입</button>
-      <button onClick={() => {window.location.href = '/login'}}>로그인</button>
+      <button onClick={() => {window.location.href = '/signin'}}>로그인</button>
     </FooterStyle>
   );
 };

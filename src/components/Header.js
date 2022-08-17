@@ -9,10 +9,10 @@ const Header = () => {
       <span>{(function(){
         if(window.location.pathname === '/'){
           return (`회원가입`)
-        }else if(window.location.pathname === '/login'){
+        }else if(window.location.pathname === '/signin'){
           return (`로그인`)
         }else if(window.location.pathname === '/todos'){
-          return (`투두리스트`)
+          return (`일정관리`)
         }
       })()}</span>
     </HeaderStyle>

@@ -18,11 +18,12 @@ const Form = () => {
     e.preventDefault();
     axios
       .post(
-        "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signup",
+        "/auth/signup",
         {
           email: formData.email,
           password: formData.pw,
         },
+        
         {
           headers: {
             "Content-type": "application/json",
@@ -31,9 +32,10 @@ const Form = () => {
         }
       )
       .then((response) => {
-        localStorage.setItem("loginKey", JSON.stringify(response.data))
-        window.location.href = '/login'
+        localStorage.setItem("loginKey", JSON.stringify(response.data));
+        window.location.href = "/login";
       })
+
       .catch((response) => {
         console.log("Error!");
       });

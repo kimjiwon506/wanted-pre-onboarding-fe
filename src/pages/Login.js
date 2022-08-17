@@ -23,14 +23,26 @@ const Login = () => {
     };
     axios
       .post(
-        "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin",
+        "/auth/signin",
         data,
+        // { withCredentials: true },
+        {
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+          },
+        }
       )
       .then((response) => {
         const { accessToken } = response.data;
         localStorage.setItem("loginKey", JSON.stringify(response.data));
-        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-        window.location.href = "/todo";
+        // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        // window.location.href = "/todo";
+
+        // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+        // axios.defaults.headers.common[
+        //   "Authorization"
+        // ] = `Bearer ${accessToken}`;
       })
       .catch((response) => {
         console.log("Error!");

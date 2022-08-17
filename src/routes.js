@@ -11,7 +11,7 @@ const Routes = () => {
       element: <Join />
     },
     {
-      path: "/singup",
+      path: "/signin",
       element: <Login />,
     },
     {
