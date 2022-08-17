@@ -1,9 +1,9 @@
 import React, { createContext, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import { Join, Login, Todo } from './pages'
+import Routes from "./routes"
 
 const initialFormData = {
   email: "",
@@ -24,11 +24,7 @@ function App() {
       <WrapStyle>
         <FormContext.Provider value={{ formData, setFormData }}>
           <Header />
-          <Routes>
-              <Route exact path="/" element={<Join />}></Route>
-              <Route path="/login" element={<Login />}></Route>
-              <Route path="/todo" element={<Todo />}></Route>
-          </Routes>
+          <Routes></Routes>
           <Footer />
         </FormContext.Provider>
       </WrapStyle>

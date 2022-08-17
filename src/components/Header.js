@@ -11,7 +11,7 @@ const Header = () => {
           return (`회원가입`)
         }else if(window.location.pathname === '/login'){
           return (`로그인`)
-        }else if(window.location.pathname === '/todo'){
+        }else if(window.location.pathname === '/todos'){
           return (`투두리스트`)
         }
       })()}</span>
