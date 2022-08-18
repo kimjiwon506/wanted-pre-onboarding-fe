@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import TodoInsert from "../components/TodoInsert";
 import TodoList from "../components/TodoList";
+import axios from "axios";
 
 const Todo = () => {
   const [todos, setTodos] = useState([
@@ -24,6 +25,11 @@ const Todo = () => {
   const onRemove = useCallback(
     (id) => {
       setTodos(todos.filter((todo) => todo.id !== id));
+      // axios.delete(`/todos/:${id}`).then((response) => {
+      //   console.log(setTodos(response))
+      // }).catch((response) => {
+      //   console.log(response)
+      // })
     },
     [todos]
   );

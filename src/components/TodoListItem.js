@@ -30,7 +30,6 @@ const TodoListItem = ({ todo, onRemove }) => {
   const onSaveTodo = () => {
     localStorage.setItem("saveTodo", JSON.stringify(todo.text));
     JSON.parse(localStorage.getItem("saveTodo"));
-
     // localStorage.setItem(
     //   "saveTodo",
     //   JSON.stringify({ id: id, text: todo.text, isCompleted: false, userId: 1 })

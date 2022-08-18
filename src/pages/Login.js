@@ -25,7 +25,7 @@ const Login = () => {
       .post(
         "/auth/signin",
         data,
-        { withCredentials: true },
+        // { withCredentials: true },
         {
           headers: {
             "Content-type": "application/json",
@@ -45,7 +45,7 @@ const Login = () => {
         //   "Authorization"
         // ] = `Bearer ${accessToken}`;
 
-         window.location.href = "/todo";
+         window.location.href = "/todos";
       })
       .catch((response) => {
         console.log("Error!");
