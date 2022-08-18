@@ -22,6 +22,7 @@ const TodoListItem = ({ todo, onRemove, onEdit }) => {
       e.preventDefault();
       setCheckEdit(false);
       onEdit(newValue, id)
+      // todo.text = value;
     },
     [newValue]
   );

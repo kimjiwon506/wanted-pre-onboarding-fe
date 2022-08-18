@@ -4,7 +4,9 @@ import TodoList from "../components/TodoList";
 import axios from "axios";
 
 const Todo = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    { id: 1, text: "투두리스트 만들기", isCompleted: false },
+  ]);
   const nextId = useRef(0);
 
   const onInsert = useCallback(
@@ -23,20 +25,19 @@ const Todo = () => {
   const onRemove = useCallback(
     (id) => {
       setTodos(todos.filter((todo) => todo.id !== id));
-      // axios.delete(`/todos/:${id}`).then((response) => {
-      //   console.log(setTodos(response))
-      // }).catch((response) => {
-      //   console.log(response)
-      // })
     },
     [todos]
   );
 
   const onEdit = (newValue, id) => {
-    // setTodos(todos.map((todo)=>{}))
-    const newTodoList = todos.map((item) => ({ ...item, text: item.id === id ? newValue : item.text }));
+    const newTodoList = todos.map(
+      (item) => (
+        console.log(item.id, id),
+        { ...item, text: item.id === id ? newValue : item.text }
+      )
+    );
     setTodos(newTodoList);
-  }
+  };
 
   return (
     <div>
