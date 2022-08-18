@@ -6,25 +6,24 @@ import {
   FiArrowUpCircle,
   FiCheckCircle,
 } from "react-icons/fi";
-import { HiCubeTransparent } from "react-icons/hi";
 import styled from "styled-components";
 
-const TodoListItem = ({ todo, onRemove }) => {
+const TodoListItem = ({ todo, onRemove, onEdit }) => {
   const { id, text, checked } = todo;
   const [checkEdit, setCheckEdit] = useState(false);
-  const [value, setValue] = useState("");
+  const [newValue, setNewValue] = useState(todo.text);
 
   const onChange = (e) => {
-    setValue(e.target.value);
+    setNewValue(e.target.value);
   };
 
   const onSubmitEdit = useCallback(
     (e) => {
       e.preventDefault();
       setCheckEdit(false);
-      todo.text = value;
+      onEdit(newValue, id)
     },
-    [value]
+    [newValue]
   );
 
   const onSaveTodo = () => {

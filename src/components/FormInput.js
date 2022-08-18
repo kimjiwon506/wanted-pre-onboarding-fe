@@ -34,7 +34,6 @@ const FormInput = ({ id, label, placeholder, errorData, setErrorData }) => {
 
   const { formData, setFormData } = useContext(FormContext);
 
-  // console.log(formData[id]);
   
   return (
     <>
