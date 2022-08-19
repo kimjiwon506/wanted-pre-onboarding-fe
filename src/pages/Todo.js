@@ -45,11 +45,18 @@ const Todo = () => {
     window.alert('전송이 완료되었습니다!')
   }
 
+  const onCheck = (todoCheck) => {
+    const newChecked = todos.map((item)=>({
+      ...item, isCompleted: todoCheck
+    }));
+    setTodos(newChecked)
+  }
+
   return (
     <div>
       <h3>일정관리</h3>
       <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onRemove={onRemove} onEdit={onEdit} onSave={onSave} />
+      <TodoList todos={todos} onRemove={onRemove} onEdit={onEdit} onSave={onSave} onCheck={onCheck} />
     </div>
   );
 };

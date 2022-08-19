@@ -34,7 +34,6 @@ const Form = () => {
         localStorage.setItem("loginKey", JSON.stringify(response.data));
         window.location.href = "/signin";
       })
-
       .catch((response) => {
         console.log("Error!");
       });

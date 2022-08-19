@@ -8,11 +8,11 @@ import {
 } from "react-icons/fi";
 import styled from "styled-components";
 
-const TodoListItem = ({ todo, onRemove, onEdit, onSave }) => {
+const TodoListItem = ({ todo, onRemove, onEdit, onSave, onCheck }) => {
   const { id, text, checked } = todo;
   const [checkEdit, setCheckEdit] = useState(false);
   const [newValue, setNewValue] = useState(todo.text);
-
+  const [todoCheck, setTodochek] = useState(false);
   const onChange = (e) => {
     setNewValue(e.target.value);
   };
@@ -21,15 +21,25 @@ const TodoListItem = ({ todo, onRemove, onEdit, onSave }) => {
     (e) => {
       e.preventDefault();
       setCheckEdit(false);
-      onEdit(newValue, id)
+      onEdit(newValue, id);
     },
     [newValue]
   );
 
+  const onCompleted = () => {
+    setTodochek((preve) => !preve);
+    onCheck(todoCheck)
+  };
   return (
     <TodoListItemStyle>
       {!checkEdit ? (
-        <div className="todoTitle">{text}</div>
+        <>
+          <input
+            type={"checkbox"}
+            onClick={onCompleted}
+          />
+          <div className={`todoTitle ${todoCheck ? "checked" : ""}`}>{text}</div>
+        </>
       ) : (
         <input className="todoTitleReWrite" type="text" onChange={onChange} />
       )}
@@ -85,6 +95,11 @@ const TodoListItemStyle = styled.div`
 
   .todoTitle {
     flex: 1;
+
+    &.checked {
+      text-decoration: line-through;
+      color: gray;
+    }
   }
   .icons {
     display: flex;
@@ -116,5 +131,6 @@ const TodoListItemStyle = styled.div`
     }
   }
 `;
+
 
 export default TodoListItem;
