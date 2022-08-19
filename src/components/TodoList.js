@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import TodoListItem from "./TodoListItem";
 
-const TodoList = ({ todos, onRemove, onToggle, onEdit }) => {
+const TodoList = ({ todos, onRemove, onToggle, onEdit, onSave }) => {
 
   return (
     <div>
@@ -13,6 +13,7 @@ const TodoList = ({ todos, onRemove, onToggle, onEdit }) => {
           onRemove={onRemove}
           onToggle={onToggle}
           onEdit={onEdit}
+          onSave={onSave}
         />
       ))}
     </div>

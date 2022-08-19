@@ -39,11 +39,15 @@ const Todo = () => {
     setTodos(newTodoList);
   };
 
+  const onSave = () => {
+    
+  }
+
   return (
     <div>
       <h3>일정관리</h3>
       <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onRemove={onRemove} onEdit={onEdit} />
+      <TodoList todos={todos} onRemove={onRemove} onEdit={onEdit} onSave={onSave} />
     </div>
   );
 };

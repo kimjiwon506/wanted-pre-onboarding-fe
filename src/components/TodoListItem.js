@@ -8,7 +8,7 @@ import {
 } from "react-icons/fi";
 import styled from "styled-components";
 
-const TodoListItem = ({ todo, onRemove, onEdit }) => {
+const TodoListItem = ({ todo, onRemove, onEdit, onSave }) => {
   const { id, text, checked } = todo;
   const [checkEdit, setCheckEdit] = useState(false);
   const [newValue, setNewValue] = useState(todo.text);
@@ -22,36 +22,9 @@ const TodoListItem = ({ todo, onRemove, onEdit }) => {
       e.preventDefault();
       setCheckEdit(false);
       onEdit(newValue, id)
-      // todo.text = value;
     },
     [newValue]
   );
-
-  const onSaveTodo = () => {
-    localStorage.setItem("saveTodo", JSON.stringify(todo.text));
-    JSON.parse(localStorage.getItem("saveTodo"));
-    // localStorage.setItem(
-    //   "saveTodo",
-    //   JSON.stringify({ id: id, text: todo.text, isCompleted: false, userId: 1 })
-    // );
-    
-    // JSON.parse(localStorage.getItem("saveTodo"));
-    // axios.post(
-    //   "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos",
-    //   {
-    //     id: id,
-    //     text: text,
-    //     isCompleted: false,
-    //     userId: 1,
-    //   },
-    //   {
-    //     headers: {
-    //       Authorization: "Bearer access_token",
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // );
-  };
 
   return (
     <TodoListItemStyle>
@@ -89,7 +62,7 @@ const TodoListItem = ({ todo, onRemove, onEdit }) => {
         ) : (
           <FiArrowUpCircle
             className="FiArrowUpCircle unChecked"
-            onClick={onSaveTodo}
+            onClick={onSave}
           />
         )}
         <FiXCircle className="delete" onClick={() => onRemove(id)} />
