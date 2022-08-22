@@ -31,7 +31,7 @@ const Form = () => {
         }
       )
       .then((response) => {
-        localStorage.setItem("loginKey", JSON.stringify(response.data));
+        localStorage.setItem("loginKey", JSON.stringify(response));
         window.location.href = "/signin";
       })
       .catch((response) => {

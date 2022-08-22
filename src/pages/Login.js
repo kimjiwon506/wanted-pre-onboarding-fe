@@ -4,8 +4,6 @@ import styled from "styled-components";
 import FormInput from "../components/FormInput";
 import axios from "axios";
 
-// axios.defaults.withCredentials = true;
-
 const initialErrorData = {
   loginEmailCheck: "",
   loginPwCheck: "",
@@ -25,7 +23,6 @@ const Login = () => {
       .post(
         "/auth/signin",
         data,
-        // { withCredentials: true },
         {
           headers: {
             "Content-type": "application/json",
@@ -34,21 +31,12 @@ const Login = () => {
         }
       )
       .then((response) => {
-        // const { accessToken } = response.data;
-        
-        localStorage.setItem("loginKey", JSON.stringify(response.data));
-        
-        // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-
-        // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-        // axios.defaults.headers.common[
-        //   "Authorization"
-        // ] = `Bearer ${accessToken}`;
-
+        localStorage.setItem("loginKey", response.data.access_token);
          window.location.href = "/todos";
       })
       .catch((response) => {
         console.log("Error!");
+        // window.location.href="/auth/signup"
       });
   };
 

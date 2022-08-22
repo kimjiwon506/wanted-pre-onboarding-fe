@@ -72,7 +72,7 @@ const TodoListItem = ({ todo, onRemove, onEdit, onSave, onCheck }) => {
         ) : (
           <FiArrowUpCircle
             className="FiArrowUpCircle unChecked"
-            onClick={onSave}
+            onClick={()=>onSave(id,text, todoCheck)}
           />
         )}
         <FiXCircle className="delete" onClick={() => onRemove(id)} />

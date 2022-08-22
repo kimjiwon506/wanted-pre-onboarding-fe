@@ -7,7 +7,8 @@ import Routes from "./routes";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:8000";
-// axios.defaults.withCredentials = true;
+
+// axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
 const initialFormData = {
   email: "",
