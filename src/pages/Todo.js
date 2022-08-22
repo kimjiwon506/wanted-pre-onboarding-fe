@@ -58,7 +58,7 @@ const Todo = () => {
       },
     }
     ).then((response)=>{console.log(response)})
-    // window.alert("전송이 완료되었습니다!");
+    window.alert("전송이 완료되었습니다!");
   };
 
   const onCheck = (todoCheck) => {
