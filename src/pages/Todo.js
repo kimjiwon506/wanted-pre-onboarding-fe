@@ -3,10 +3,6 @@ import TodoInsert from "../components/TodoInsert";
 import TodoList from "../components/TodoList";
 import axios from "axios";
 
-const token = localStorage.getItem("loginKey");
-const headerAuth = `Bearer ${token}`
-
-
 const Todo = () => {
   const [todos, setTodos] = useState([
     { id: 1, text: "투두리스트 아이템", isCompleted: false, userId: 1 },

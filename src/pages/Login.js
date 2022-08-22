@@ -36,7 +36,7 @@ const Login = () => {
       })
       .catch((response) => {
         console.log("Error!");
-        // window.location.href="/auth/signup"
+        window.location.href="/auth/signup"
       });
   };
 
