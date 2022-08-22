@@ -2,7 +2,7 @@
 React, Javascript, axios, Styled-Component
 
 #### 프로젝트의 실행 방법
-npm install
+npm install,
 npm start
 
 #### 1.로그인/회원가입
