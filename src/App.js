@@ -6,9 +6,7 @@ import Header from "./components/Header";
 import Routes from "./routes";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8000";
-
-// axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+axios.defaults.baseURL = "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production";
 
 const initialFormData = {
   email: "",
