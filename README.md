@@ -1,9 +1,10 @@
-#### 사용 툴
-React, Javascript, axios, Styled-Component
-
 #### 프로젝트의 실행 방법
+git clone, 
 npm install,
 npm start
+
+#### 사용 툴
+React, Javascript, axios, Styled-Component
 
 #### 1.로그인/회원가입
 ###### Assignment1 : 이메일과 비밀번호의 유효성 검사기능 (이메일 조건: @ 포함 / 비밀번호 조건: 8자 이상) , 조건 만족시 버튼 활성화
