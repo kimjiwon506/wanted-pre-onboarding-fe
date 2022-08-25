@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useReducer } from "react";
+import React, { useState, useRef, useCallback, useReducer, memo } from "react";
 import TodoInsert from "../components/TodoInsert";
 import TodoList from "../components/TodoList";
 import axios from "axios";
@@ -7,12 +7,9 @@ import { TodoReducer, initialTodo } from "../reducer";
 const Todo = () => {
   const [todos, dispatch] = useReducer(TodoReducer, initialTodo);
 
-  // const [todos, setTodos] = useState([
-  //   { id: 1, text: "투두리스트 아이템", isCompleted: false, userId: 1 },
-  // ]);
-  const nextId = useRef(14);
+  const nextId = useRef(3);
 
-  const onInsert = useCallback((text) => {
+  const onInsert = (text) => {
     dispatch({
       type: "INSERT",
       todo: {
@@ -21,31 +18,24 @@ const Todo = () => {
         isCompleted: false,
       },
     });
-  }, [todos]);
+    nextId.current += 1;
+  };
 
-  const onRemove = useCallback((id)=>{
+  const onRemove = (id) => {
     dispatch({
       type: "REMOVE",
-      id
+      id: id,
+    });
+    //window.alert("해당 투두리스트가 삭제되었습니다.");
+  };
+
+  const onEdit = (newValue, id) => {
+    dispatch({
+      type: "EDIT",
+      text: newValue,
+      id: id
     })
-  },[todos])
-
-  // const onRemove = useCallback(
-  //   (id) => {
-  //     const removeItem = todos.filter((todo) => todo.id !== id);
-  //     setTodos(removeItem);
-  //     window.alert("해당 투두리스트가 삭제되었습니다.");
-  //   },
-  //   [todos]
-  // );
-
-  // const onEdit = (newValue, id) => {
-  //   const newTodoList = todos.map((item) => ({
-  //     ...item,
-  //     text: item.id === id ? newValue : item.text,
-  //   }));
-  //   setTodos(newTodoList);
-  // };
+  };
 
   // const onSave = (id, text, todoCheck) => {
   //   axios.post("/todos",{
@@ -78,7 +68,7 @@ const Todo = () => {
       <TodoList
         todos={todos}
         onRemove={onRemove}
-        // onEdit={onEdit}
+        onEdit={onEdit}
         // onSave={onSave}
         // onCheck={onCheck}
       />
@@ -86,4 +76,4 @@ const Todo = () => {
   );
 };
 
-export default Todo;
+export default React.memo(Todo);
