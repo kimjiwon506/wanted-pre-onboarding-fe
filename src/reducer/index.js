@@ -17,6 +17,12 @@ const TodoReducer = (state, action) => {
         ...item,
         text: item.id === action.id ? action.text : item.text,
       }));
+    case "SAVE":
+      return state.map(
+        (item) => (
+          console.log("item:", item, "action:", action), { ...item, action }
+        )
+      );
   }
 };
 

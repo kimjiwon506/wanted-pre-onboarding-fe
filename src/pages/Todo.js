@@ -37,6 +37,15 @@ const Todo = () => {
     })
   };
 
+  const onSave = (id, text, todoCheck) => {
+    dispatch({
+      type: "SAVE",
+      id: id,
+      text: text,
+      isCompleted: todoCheck
+    })
+  };
+
   // const onSave = (id, text, todoCheck) => {
   //   axios.post("/todos",{
   //     id: id,
@@ -69,7 +78,7 @@ const Todo = () => {
         todos={todos}
         onRemove={onRemove}
         onEdit={onEdit}
-        // onSave={onSave}
+        onSave={onSave}
         // onCheck={onCheck}
       />
     </div>
